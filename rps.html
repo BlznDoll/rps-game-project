@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+
+    <title>Rock! Paper! Scissors!</title>
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body>
+
+    <h1 style="text-align: center;">Rock! Paper! Scissors!</h1>
+
+    <script>
+        
+        let computer = 0;
+        let player = 0;
+
+        /* Use build-in function-prompt() to return user's choice and store it in the variable userChoice*/
+        let playerSelection = prompt('Type rock, paper, or scissors into the box please.');
+
+        /* Convert all return values into lower cases*/
+        playerSelection = playerSelection.toLowerCase();
+
+        /* An array declared as choiceStack to let computer choose from*/
+        let choiceStack = ['paper', 'rock', 'scissors'];
+
+        /* 2 JS build-in functions-Math.random() to generate random number between 0-1, multiply it
+        by 3 because there are 3 choices in array and pass it into Math.floor() to return the largest
+        integer less than or equal to a given number*/
+        let randomNum = Math.floor(Math.random() * 3);
+
+        /* Pass the generated number as an index to choiceStack to get the element in the array and store
+        it in another variable computerChoice*/
+        let computerSelection = choiceStack[randomNum];
+
+        /* Log the result on the console*/
+        console.log('Your choice, ' + playerSelection + '. Computer\'s choice, ' + computerSelection + '.');
+
+
+        /* Compare each choice with if/else statement, then print the result on the console*/
+    function rounds(playerSelection, computerSelection) {
+        if (playerSelection === computerSelection) {
+            return 'Tie!';
+        } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+            player++;
+            return 'You win!';
+        } else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+            player++;
+            return 'You win!';
+        } else if (playerSelection === 'scissors' && computerSelection === 'rock') {
+            computer++;
+            return 'You lose!';
+        } else if (playerSelection === 'rock' && computerSelection === 'paper') {
+            computer++;
+            return 'You lose!';
+        } else if (playerSelection === 'paper' && computerSelection === 'scissors') {
+            computer++;
+            return 'You lose!';
+        } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+            player++;
+            return 'You win!';
+        } else {
+            console.log('Invalid input, please try again.');
+        }
+    }
+
+    function game() {
+        rounds(playerSelection, computerSelection);
+    }
+
+        for (let i = 0; i < 5; i++) {
+            game();
+        }
+
+        console.log(game());
+
+        
+        if (computer < player) {
+            console.log('Congrats! You win!');
+        } else if (computer > player) {
+            console.log('Sorry, you lose.');
+        } else {
+            console.log('It\'s a tie!');
+        }
+
+        console.log('Computer score = ' + computer + ' Player score = ' + player);
+
+
+
+    </script>
+
+
+</body>
+
+
+</html>
